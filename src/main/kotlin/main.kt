@@ -42,10 +42,12 @@ fun main(args: Array<String>) {
     }
 
     // finally rank the packages based on the number of other packages that depend on it
+    println("| Package  | # of Packages that Depend on it |\n" +
+            "| -------- | ------------------------------- |")
     acc.mapValues { it.value.size }
             .toList().sortedByDescending { it.second }
             .filter { it.second != 0 }
-            .forEach { println(it) }
+            .forEach { println("| ${it.first} | ${it.second} |") }
 }
 
 
